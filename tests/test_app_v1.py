@@ -1,4 +1,4 @@
-from app_v1 import app
+from app.app_v1 import app
 
 
 def test_app_returns_msg():
