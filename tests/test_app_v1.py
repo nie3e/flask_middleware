@@ -1,5 +1,4 @@
 from app_v1 import app
-from flask.testing import FlaskClient
 
 
 def test_app_returns_msg():
