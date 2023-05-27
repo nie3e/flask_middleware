@@ -32,6 +32,8 @@ services:
       - "5555:5555"
     networks:
       - myflaskapi
+    environment:
+      - PLATFORM=DOCKER
     entrypoint:
       - python
       - /var/flask/app_middleware.py
