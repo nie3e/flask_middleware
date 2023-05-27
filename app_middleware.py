@@ -1,13 +1,13 @@
 from werkzeug.middleware.http_proxy import ProxyMiddleware
 from werkzeug.serving import run_simple
-from app_v1 import app
+from flask import Flask
 
-app = ProxyMiddleware(app, {
+app = ProxyMiddleware(Flask(__name__), {
     "/v1/": {
-        "target": "http://127.0.0.1:5000/v1/"
+        "target": "http://api_v1:5000/v1/"
     },
     "/v2/": {
-        "target": "http://127.0.0.1:5001/v2/"
+        "target": "http://api_v2:5001/v2/"
     }
 })
 

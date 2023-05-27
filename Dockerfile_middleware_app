@@ -1,0 +1,5 @@
+FROM python:3.10-alpine3.17
+RUN mkdir /var/flask
+COPY requirements.txt /var/flask
+RUN pip install -r /var/flask/requirements.txt
+COPY app_middleware.py /var/flask

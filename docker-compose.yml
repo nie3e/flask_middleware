@@ -4,8 +4,6 @@ services:
     build:
       dockerfile: Dockerfile_v1_app
       context: .
-    ports:
-      - "5000:5000"
     environment:
       - FLASK_PORT=5000
     networks:
@@ -13,12 +11,11 @@ services:
     entrypoint:
       - python
       - /var/flask/app_v1.py
+
   api_v2:
     build:
       dockerfile: Dockerfile_v2_app
       context: .
-    ports:
-      - "5001:5001"
     environment:
       - FLASK_PORT=5001
     networks:
@@ -26,6 +23,22 @@ services:
     entrypoint:
       - python
       - /var/flask/app_v2.py
+
+  api_middleware:
+    build:
+      dockerfile: Dockerfile_middleware_app
+      context: .
+    ports:
+      - "5555:5555"
+    networks:
+      - myflaskapi
+    entrypoint:
+      - python
+      - /var/flask/app_middleware.py
+    links:
+      - api_v1
+      - api_v2
+
 networks:
   myflaskapi:
     name: myflaskapi
