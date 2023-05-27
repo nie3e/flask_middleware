@@ -25,6 +25,14 @@ Middleware layer - groups up our applications and redirects requests to them.
 
 ## How to run
 ### Manually
+Install requirements:
+```shell
+pip install -r requirements.txt
+```
+or for running tests:
+```shell
+pip install -r requirements.txt -r requirements-test.txt
+```
 Run applications:
 ```shell
 python app_v1.py
